@@ -26,6 +26,8 @@ class Room:
     def get_next_pos(self):
         return self.dir.pop()
 
+
+''' Recursive Backtracking 알고리즘 기반 미로 생성 '''
 class Maze:
     def __init__(self, size) -> None:
         self.maze_size = size * 2 + 1
