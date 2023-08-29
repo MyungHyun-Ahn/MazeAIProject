@@ -51,19 +51,19 @@ class Maze:
 
     def make_maze(self, size):
         rooms = [[Room(x, y) for x in range(size)] for y in range(size)]
-        maze = [[1 for _ in range(size * 2 + 1)] for _ in range(size * 2 + 1)]
+        maze = [[0.0 for _ in range(size * 2 + 1)] for _ in range(size * 2 + 1)]
 
         visited = []
 
         def make(cur_room):
             cx, cy = cur_room.get_cur_pos()
             visited.append((cx, cy))
-            maze[cy * 2 + 1][cx * 2 + 1] = 0
+            maze[cy * 2 + 1][cx * 2 + 1] = 1.0
             while cur_room.dir:
                 nx, ny = cur_room.get_next_pos()
                 if 0 <= nx < size and 0 <= ny < size:
                     if (nx, ny) not in visited:
-                        maze[cy + ny + 1][cx + nx + 1] = 0
+                        maze[cy + ny + 1][cx + nx + 1] = 1.0
                         make(rooms[ny][nx])
 
         make(rooms[0][0])
@@ -71,8 +71,8 @@ class Maze:
         player_pos = self.get_enter_pos()
         exit_pos = self.get_exit_pos()
 
-        maze[player_pos[0]][player_pos[1]] = 2
-        maze[exit_pos[0]][exit_pos[1]] = 3
+        # maze[player_pos[0]][player_pos[1]] = 2
+        # maze[exit_pos[0]][exit_pos[1]] = 3
 
         return maze
     

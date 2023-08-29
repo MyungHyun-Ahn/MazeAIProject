@@ -2,7 +2,7 @@ from time import time
 from Player.Player import Player
 
 if __name__ == '__main__':
-    player = Player(7)
+    player = Player(10)
 
     print()
     print()
